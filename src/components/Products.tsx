@@ -228,62 +228,66 @@ const [activeCategory, setActiveCategory] = useState("miles-creeps");
   };
   
 
-  return (
-    <section id="products" ref={productsRef} className="py-16">
-      <div className="container mx-auto px-4">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center justify-center gap-2 mb-8"
-        >
-          <Sparkles className="text-pink-600" />
-          <h2 className="text-3xl font-bold text-center">Our Creations</h2>
-          <Sparkles className="text-pink-600" />
-        </motion.div>
+return (
+  <section id="products" ref={productsRef} className="py-16">
+    <div className="container mx-auto px-4">
+      <motion.div 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center justify-center gap-2 mb-8"
+      >
+        <Sparkles className="text-pink-600" />
+        <h2 className="text-3xl font-bold text-center">Our Creations</h2>
+        <Sparkles className="text-pink-600" />
+      </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
-          {categories.map((category, index) => (
-            <motion.div
-              key={category.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-            >
-              <Badge
-                variant="outline"
-                className={`cursor-pointer text-sm px-4 py-2 transition-all ${
-                  activeCategory === category.id
-                    ? "bg-pink-600 text-white hover:bg-pink-700"
-                    : "border-pink-600 text-pink-600 hover:bg-pink-50"
-                }`}
-                onClick={() => {
-                  setActiveCategory(category.id);
-                  setCurrentPage(1);
-                }}
-              >
-                {category.name}
-              </Badge>
-            </motion.div>
-          ))}
-        </motion.div>
-
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="grid md:grid-cols-3 gap-8 mb-8"
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="flex flex-wrap justify-center gap-4 mb-12"
+      >
+        {categories.map((category, index) => (
+          <motion.div
+            key={category.id}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
           >
+            <Badge
+              variant="outline"
+              className={`cursor-pointer text-sm px-4 py-2 transition-all ${
+                activeCategory === category.id
+                  ? "bg-pink-600 text-white hover:bg-pink-700"
+                  : "border-pink-600 text-pink-600 hover:bg-pink-50"
+              }`}
+              onClick={() => {
+                setActiveCategory(category.id);
+                setCurrentPage(1);
+              }}
+            >
+              {category.name}
+            </Badge>
+          </motion.div>
+        ))}
+      </motion.div>
+
+{currentProducts.length > 0 ? (
+        <motion.div 
+          layout // Tambahkan layout prop
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible" // Ganti whileInView dengan animate
+          className="grid md:grid-cols-3 gap-8 mb-8"
+        >
           {currentProducts.map((product) => (
             <motion.div
+              layout // Tambahkan layout prop
               key={product.name}
               variants={cardVariants}
+              initial="hidden"
+              animate="visible" // Pastikan setiap card memiliki animasi
             >
               <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl">
                 <div className="relative h-96 overflow-hidden flex items-center justify-center px-8">
@@ -301,28 +305,13 @@ const [activeCategory, setActiveCategory] = useState("miles-creeps");
                 </div>
 
                 <CardContent className="p-6">
-                  <motion.h3 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="text-xl font-semibold mb-4"
-                  >
+                  <h3 className="text-xl font-semibold mb-4">
                     {product.name}
-                  </motion.h3>
-                  <motion.p 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                    className="text-gray-600 leading-relaxed mb-4"
-                  >
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed mb-4">
                     {product.description}
-                  </motion.p>
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                    className="flex flex-wrap gap-2"
-                  >
+                  </p>
+                  <div className="flex flex-wrap gap-2">
                     <Badge variant="secondary" className="bg-pink-100 text-pink-600">
                       Premium Quality
                     </Badge>
@@ -332,39 +321,50 @@ const [activeCategory, setActiveCategory] = useState("miles-creeps");
                     <Badge variant="secondary" className="bg-pink-100 text-pink-600">
                       Special Recipe
                     </Badge>
-                  </motion.div>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </motion.div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center py-12"
+        >
+          <h3 className="text-xl font-semibold text-gray-600">No products available in this category</h3>
+          <p className="text-gray-500 mt-2">Please check back later or select another category</p>
+        </motion.div>
+      )}
 
-        {totalPages > 1 && (
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex justify-center gap-2"
-          >
-            {pageNumbers.map((number) => (
-              <Badge
-                key={number}
-                variant="outline"
-                className={`cursor-pointer px-4 py-2 transition-all ${
-                  currentPage === number
-                    ? "bg-pink-600 text-white hover:bg-pink-700"
-                    : "border-pink-600 text-pink-600 hover:bg-pink-50"
-                }`}
-                onClick={() => handlePageChange(number)}
-              >
-                {number}
-              </Badge>
-            ))}
-          </motion.div>
-        )}
-      </div>
-    </section>
-  );
+      {totalPages > 1 && (
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-center gap-2"
+        >
+          {pageNumbers.map((number) => (
+            <Badge
+              key={number}
+              variant="outline"
+              className={`cursor-pointer px-4 py-2 transition-all ${
+                currentPage === number
+                  ? "bg-pink-600 text-white hover:bg-pink-700"
+                  : "border-pink-600 text-pink-600 hover:bg-pink-50"
+              }`}
+              onClick={() => handlePageChange(number)}
+            >
+              {number}
+            </Badge>
+          ))}
+        </motion.div>
+      )}
+    </div>
+  </section>
+);
 };
 
 export default Products;
