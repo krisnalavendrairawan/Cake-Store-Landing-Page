@@ -27,7 +27,7 @@ const AboutUs = () => {
             {/* Main image */}
             <div className="relative z-10 h-full w-full flex items-center justify-center p-8">
               <img
-                src="/src/assets/image/products/mc-redvelvet.png"
+                src="/assets/image/products/mc-redvelvet.png"
                 alt="Our Store"
                 className="object-contain max-h-full max-w-full"
               />

@@ -65,7 +65,7 @@ const Modal = ({ imageIndex }: { imageIndex: number }) => (
       </Button>
       <div className="w-full h-full flex items-center justify-center p-4">
         <img
-          src={`/src/assets/image/pamflet/pamflet${imageIndex + 1}.jpg`}
+          src={`/assets/image/pamflet/pamflet${imageIndex + 1}.jpg`}
           alt={newsItems[imageIndex].title}
           className="max-w-full max-h-full object-contain"
         />
@@ -101,7 +101,7 @@ const Modal = ({ imageIndex }: { imageIndex: number }) => (
             >
               <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                 <img
-                  src={`/src/assets/image/pamflet/pamflet${index + 1}.jpg`}
+                  src={`/assets/image/pamflet/pamflet${index + 1}.jpg`}
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />

@@ -10,28 +10,28 @@ const TestimonialsSection = () => {
     {
       name: "Sarah Johnson",
       role: "Regular Customer",
-      image: "/src/assets/image/avatars/1.png",
+      image: "/assets/image/avatars/1.png",
       content: "The cakes here are absolutely amazing! Every celebration becomes more special with Salma Bakery. The attention to detail and taste is unmatched.",
       rating: 5
     },
     {
       name: "Michael Chen",
       role: "Food Blogger",
-      image: "/src/assets/image/avatars/2.png",
+      image: "/assets/image/avatars/2.png",
       content: "As a food critic, I've tried many bakeries, but Salma Bakery stands out. Their innovative flavors and consistent quality make them the best in town.",
       rating: 5
     },
     {
       name: "Amanda Roberts",
       role: "Event Planner",
-      image: "/src/assets/image/avatars/3.png",
+      image: "/assets/image/avatars/3.png",
       content: "Working with Salma Bakery for events is always a pleasure. They're professional, reliable, and their cakes never fail to impress my clients.",
       rating: 5
     },
     {
       name: "David Kim",
       role: "Reseller Partner",
-      image: "/src/assets/image/avatars/4.png",
+      image: "/assets/image/avatars/4.png",
       content: "The quality and service are exceptional. My customers always ask for more, and the team is incredibly supportive of their reseller partners.",
       rating: 5
     }

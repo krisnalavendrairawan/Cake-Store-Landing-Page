@@ -157,7 +157,7 @@ const HeroSection: React.FC = () => {
               />
               
               <img
-                src="/src/assets/image/logo/logo.png"
+                src="/assets/image/logo/logo.png"
                 alt="Salma Bakery Logo"
                 className="rounded-2xl object-contain w-full h-full relative z-20 drop-shadow-xl"
               />
