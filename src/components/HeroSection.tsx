@@ -183,7 +183,7 @@ const HeroSection: React.FC = () => {
 
               {/* Heart emoticon */}
               <motion.div
-                className="absolute -bottom-2 -left-4 w-12 h-12 text-pink-500"
+                className="absolute bottom-4 left-4 sm:bottom-0 sm:-left-4 w-12 h-12 text-pink-500"
                 animate={{
                   scale: [1, 1.3, 1],
                   y: [0, -10, 0],
@@ -199,9 +199,9 @@ const HeroSection: React.FC = () => {
                 <Heart size={32} fill="currentColor" />
               </motion.div>
 
-              {/* Cake emoticon */}
+              {/* Cake emoticon - Updated for mobile alignment */}
               <motion.div
-                className="absolute top-1/2 -right-6 w-12 h-12 text-purple-500"
+                className="absolute bottom-4 right-4 sm:top-1/2 sm:-right-6 w-12 h-12 text-purple-500 z-20"
                 animate={{
                   scale: [1, 1.2, 1],
                   x: [0, -5, 0],
